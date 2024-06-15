@@ -26,25 +26,30 @@ cd url-shortner
 #### Running Locally
 	
 1. Install Dependencies:
+   
    ```sh
    go mod download
    ```
-2. Run the Application:
+3. Run the Application:
+   
    ```sh
    go run main.go
    ```
-3. Test the Application:
+4. Test the Application:
+   
    ```sh
    go test -v ./...
    ```
 
 #### Using Docker
 1. Build the Docker Image:
+   
    ```sh
    docker build -t urlshortener:latest .
    ```
    
-2. Run the Docker Container:
+3. Run the Docker Container:
+   
    ```sh
    docker run -p 8080:8080 urlshortener:latest
    ```
@@ -52,6 +57,7 @@ cd url-shortner
 
 #### API Endpoints
 * Shorten URL:
+  
   ```sh 
   PUT /shorten
   Content-Type: application/json
@@ -68,6 +74,7 @@ cd url-shortner
   ```
 
 * Redirect to Original URL:
+  
   ```sh
   GET /{shortcode}
 
@@ -76,12 +83,14 @@ cd url-shortner
   ```
 
 #### Testing the Endpoints
+
 * Shorten a URL:
   ```sh
   curl -X PUT http://localhost:8080/shorten -H "Content-Type: application/json" -d '{"destination": "https://www.google.com"}'
   ```
 
 * Redirect to the Original URL:
+  
   Assuming the shortened URL returned is http://localhost:8080/abc123, you can use:
   ```sh
   curl -L http://localhost:8080/abc123
